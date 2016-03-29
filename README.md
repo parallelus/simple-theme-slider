@@ -8,7 +8,7 @@ This gives the theme author control over the options for each slide specific to 
 <h3>Define slide fields</h3>
 An example of defining fields for your theme:
 
-<pre>
+```
 #-----------------------------------------------------------------
 # Filters for plugin: Simple Theme Slider
 #-----------------------------------------------------------------
@@ -62,12 +62,12 @@ function theme_simple_slider_input_fields( $fields = array() ) {
 }
 add_filter('st_slider_fields', 'theme_simple_slider_input_fields' );
 endif;
-</pre>
+```
 
 <h3>Add slides to a template</h3>
 Output the slider by specifying the ID for the slide show for example this could be included in a theme template file:
 
-<pre>
+```
 $id = 123;
 $simple_slider = sts_get_slider( $id );
 if ( is_array($simple_slider) && !empty($simple_slider) ) { 
@@ -112,7 +112,7 @@ if ( is_array($simple_slider) && !empty($simple_slider) ) {
 						<article>
 							<h3><?php echo wp_kses_post($value['title']) ?></h3>
 							<p class="lead"><?php echo wp_kses_post($value['description']) ?></p>
-							<a href="<?php echo esc_url($value['link']) ?>" <?php echo  $target; // escaped above ?> class="btn btn-primary"><?php _e('Read More', 'st_slider') ?></a>
+							<a href="<?php echo esc_url($value['link']) ?>" <?php echo $target; ?>><?php _e('Read More', 'st_slider') ?></a>
 						</article>
 					</div>
 				</div>
@@ -122,7 +122,7 @@ if ( is_array($simple_slider) && !empty($simple_slider) ) {
 		<?php
 	} // end !empty($all_slides)
 } // end is_array($simple_slider)
-</pre>
+```
 
 This plugin only creates the slides UI in the WP admin. The code above gives theme authors controls to set the fields 
 and output the data. There is no JavaScript included to create a slider effect. This leaves that entirely up to the author 
