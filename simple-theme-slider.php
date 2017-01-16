@@ -5,7 +5,7 @@ Plugin URI: http://para.llel.us
 Description: A simple tool for adding custom slideshows into themes.
 Author: Parallelus
 Author URI: http://para.llel.us
-Version: 1.0.5.1
+Version: 1.0.6
 */
 
 if( ! class_exists( 'WP_List_Table' ) ) {
