@@ -172,6 +172,7 @@ if( ! class_exists( 'ST_Slider_CPT' ) ) {
 			}
 			$image_last_number = ( isset( $images['image_last_number'] ) && ! empty( $images['image_last_number'] ) ) ? $images['image_last_number'] : 0;
 
+		    wp_nonce_field( basename( __FILE__ ) , 'st-slider-box-nonce');
 			?>
 
 				<input class="image-last-number" type="hidden" name="image_last_number"  value="<?php echo $image_last_number + 1; ?>"></input>
@@ -325,6 +326,9 @@ if( ! class_exists( 'ST_Slider_CPT' ) ) {
 
 			if ( ! current_user_can( 'edit_post', $post_id ) )
 				return 0;
+
+		    if ( ! isset($_POST['st-slider-box-nonce'] ) || ! wp_verify_nonce( $_POST['st-slider-box-nonce'], basename( __FILE__ ) ) )
+			    return $post_id;
 
 			$fields = array();
 			$fields = apply_filters( 'st_slider_fields', $fields );
